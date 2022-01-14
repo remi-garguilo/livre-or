@@ -1,0 +1,15 @@
+{
+    "name": "remi/livredor",
+    "authors": [
+        {
+            "name": "remig13",
+            "email": "remi.garguilo@epitech.eu"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.4"
+    },
+    "require": {
+        "altorouter/altorouter": "^2.0"
+    }
+}
