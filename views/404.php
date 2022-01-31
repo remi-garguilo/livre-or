@@ -1,0 +1,1 @@
+<h1> <?=  $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found'; ?></h1>

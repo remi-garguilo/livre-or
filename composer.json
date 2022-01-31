@@ -6,6 +6,13 @@
             "email": "remi.garguilo@epitech.eu"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "model/",
+            "Database\\": "database/",
+            "Toolbox\\": "controller/"
+        }
+    },
     "require-dev": {
         "symfony/var-dumper": "^5.4"
     },
