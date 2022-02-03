@@ -40,18 +40,13 @@
     --Color10- : #ff2222;
 
 }
-html,body,main{
-    font-family: Dreams;
-    height: 100%;
-    width: 100%;
-    margin:0;
-    padding:0;
-    scroll-behavior: smooth;
-}
+
 .login-page {
-    width: 360px;
+    width: 100%;
+    height: 100%;
     padding: 8% 0 0;
     margin: auto;
+    background-color: red;
 }
 .form {
     position: relative;

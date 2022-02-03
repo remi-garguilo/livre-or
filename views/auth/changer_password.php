@@ -6,25 +6,29 @@ $pageTitle = "Changer de mot de passe";
 $pageDescription = "Changer votre mot de passe ici";
 session_start();
 $users = $_SESSION['auth']['login'];
-$errors = 0;
+$errors = true;
+$errors_pw = true;
 
-if (!empty($_POST)) {
-	$id = $_SESSION['auth']['id'];
-	$password = $_SESSION['auth']['password'];
-	$oldpassword = $_POST['password'];
-    $newpassword = $_POST['new_password'];
-    $confirm_password = $_POST['confirm_password'];
 
-	if (password_verify($oldpassword, $password)
-		&& $newpassword == $confirm_password)
-	{
-		User::changePassword($newpassword, $id);
-		header('location: ' . $router->generate('profil'));
-		exit();
+if (empty($_POST['password']) || empty($_POST['new_password']) || empty($_POST['confirm_password'])) {
+	$errors = false;
 	} else {
-		$errors = 1;
+		$id = $_SESSION['auth']['id'];
+		$password = $_SESSION['auth']['password'];
+		$oldpassword = $_POST['password'];
+		$newpassword = $_POST['new_password'];
+		$confirm_password = $_POST['confirm_password'];
+
+		if (password_verify($oldpassword, $password)
+			&& $newpassword == $confirm_password)
+		{
+			User::changePassword($newpassword, $id);
+			header('location: ' . $router->generate('profil'));
+			exit();
+		} else {
+			$errors_pw = false;
+		}
 	}
-}
 
 ?>
 <div data-aos="zoom-in-left"
@@ -44,9 +48,14 @@ if (!empty($_POST)) {
 			<input type="submit" value="Envoyer">
         </form>
 	</div>
-	<?php if($errors === 1):?>
-                <div class="alert">
-                    <?= Toolbox::ajouterMessageAlerte(4);?>
-                </div>
+	<?php if($errors === false):?>
+			<div class="alert">
+				<?= Toolbox::ajouterMessageAlerte(5);?>
+			</div>
+    <?php endif ?>
+	<?php if($errors_pw === false):?>
+			<div class="alert">
+				<?= Toolbox::ajouterMessageAlerte(4);?>
+			</div>
     <?php endif ?>
 </div>

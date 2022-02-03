@@ -8,19 +8,24 @@ $pageDescription = "Cette page vous sert à vous inscrire";
 session_start();
 $errors = false;
 $errors_pw = false;
-if (!empty($_POST)) {
-    if ($_POST['password'] ==  $_POST['passwordC']) {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $auth = User::Register($login, $password);
-        if ($auth === 1) {
-            $errors = true;
+$void = false;
+if (empty($_POST['login']) || empty($_POST['password']) || empty($_POST['passwordC'])) {
+    $void = true;
+} else {
+    if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['passwordC'])) {
+        if ($_POST['password'] ==  $_POST['passwordC']) {
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $auth = User::Register($login, $password);
+            if ($auth === 1) {
+                $errors = true;
+            } else {
+                header('location: ' . $router->generate('connexion'));
+                exit();
+            }
         } else {
-            header('location: ' . $router->generate('connexion'));
-            exit();
+            $errors_pw = true;
         }
-    } else {
-        $errors_pw = true;
     }
 }
 ?>
@@ -41,6 +46,11 @@ if (!empty($_POST)) {
             <?php if($errors_pw === true):?>
                 <div class="alert">
                     <?= Toolbox::ajouterMessageAlerte(1);?>
+                </div>
+            <?php endif ?>
+            <?php if($void === true):?>
+                <div class="alert">
+                    <?= Toolbox::ajouterMessageAlerte(5);?>
                 </div>
             <?php endif ?>
             <p class="message"> Déja un compte ? <a class = 'link' href="<?= $router->generate('inscription')?>"><strong> Connectez-vous</strong></a></p>

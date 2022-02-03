@@ -50,6 +50,7 @@
 }
 
 .comms {
+    padding-top: 15.625rem;
     font-family: 'Work Sans', sans-serif;
     width: 50%;
 }
@@ -72,6 +73,6 @@
     border-radius: 3px;
     margin: 2%;
     padding: 2%;
-    background-color: #DBEEFD;
+    background-color:#DFDECF;
     box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem rgba(0, 0, 0, 0.515);
 }

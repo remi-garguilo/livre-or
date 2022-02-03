@@ -1,4 +1,6 @@
 <?php
+
+use App\User;
 $pageTitle = "Profil";
 $pageDescription = "Voici votre profil";
 
@@ -7,13 +9,11 @@ if (!isset($_SESSION['auth'])) {
 	header('location: ' . $router->generate('home'));
 	exit();
 }
-
-
-$users = $_SESSION['auth']['login'];
+$user = $_SESSION['auth']['login'];
 ?>
 <div data-aos="zoom-in"
         class="card-container">
-	<span class="pro"><?= $users?></span>
+	<span class="pro"><?= $user ?></span>
 	<img class="round " src="<?= BASE_URL; ?>/views/img/profil.png" alt="user" />
 	<h3>Changer d'information</h3>
 	<div class="buttons">

@@ -42,10 +42,12 @@ if (session_status() == PHP_SESSION_NONE) {
             <span></span>
         </label>
     </header>
+    <main>
         <div class="content">
             <?= $pageContent ?>
         </div>
-        <script>
+    </main>
+    <script>
         AOS.init({
             duration: 2000,
         })

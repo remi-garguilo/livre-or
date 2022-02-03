@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 
 :root {
-  --background: #fef8cd9e;
+  --background: #fef8cd;
 }
 
 *, *::before, *::after {
@@ -11,6 +11,7 @@
 body {
 	margin: 0;
 	background: linear-gradient(#FEF8CD, #abb1d4);
+  background-attachment: fixed;
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 }
@@ -278,3 +279,12 @@ body {font-family: Arial, Helvetica, sans-serif;
   height: 20px;
 }
 /* !icon  */
+
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+}
+/*! footer */
